@@ -3,18 +3,464 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blog</title>
+        <title>Blog do Quentão - Free Fire</title>
+        <style>
+            :root {
+                --bg: #05070d;
+                --surface: rgba(255, 255, 255, 0.08);
+                --main: #ffb703;
+                --main-dark: #fb8500;
+                --highlight: #f4a261;
+                --danger: #e63946;
+                --text: #f8f9fa;
+                --muted: #94a3b8;
+                --card: rgba(19, 24, 36, 0.92);
+                --radius: 28px;
+            }
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                min-height: 100vh;
+                font-family: "Inter", system-ui, sans-serif;
+                background: radial-gradient(circle at top right, rgba(255, 183, 3, 0.12), transparent 24%),
+                    radial-gradient(circle at bottom left, rgba(230, 57, 70, 0.1), transparent 28%),
+                    linear-gradient(180deg, #080a11 0%, #05070d 100%);
+                color: var(--text);
+                line-height: 1.65;
+                padding: 20px;
+            }
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image: radial-gradient(circle at 15% 25%, rgba(255, 183, 3, 0.12), transparent 18%),
+                    radial-gradient(circle at 80% 80%, rgba(230, 57, 70, 0.1), transparent 20%);
+                pointer-events: none;
+                z-index: -1;
+            }
+            header {
+                max-width: 1120px;
+                margin: 0 auto 32px;
+                padding: 40px 38px 36px;
+                border-radius: var(--radius);
+                background: linear-gradient(135deg, rgba(255, 183, 3, 0.16), rgba(230, 57, 70, 0.12));
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 35px 70px rgba(0, 0, 0, 0.35);
+            }
+            .hero-top {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 26px;
+                flex-wrap: wrap;
+            }
+            .hero-title {
+                max-width: 720px;
+            }
+            .hero-title small {
+                display: inline-block;
+                text-transform: uppercase;
+                letter-spacing: 0.24em;
+                color: var(--main);
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+            .hero-title h1 {
+                font-size: clamp(3.5rem, 7vw, 6.5rem);
+                line-height: 0.9;
+                margin-bottom: 22px;
+                color: transparent;
+                background: linear-gradient(90deg, #ffb703, #fb8500);
+                -webkit-background-clip: text;
+                background-clip: text;
+                text-shadow: 0 18px 40px rgba(251, 133, 0, 0.2);
+            }
+            .hero-title p {
+                max-width: 680px;
+                color: #d8dee9;
+                font-size: 1.05rem;
+                margin-bottom: 26px;
+            }
+            .hero-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+            .button-primary,
+            .button-secondary {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 16px 26px;
+                border-radius: 999px;
+                font-weight: 700;
+                text-decoration: none;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+            .button-primary {
+                background: linear-gradient(135deg, var(--main), var(--main-dark));
+                color: #05070d;
+            }
+            .button-secondary {
+                border: 1px solid rgba(255, 255, 255, 0.16);
+                color: var(--text);
+                background: rgba(255, 255, 255, 0.05);
+            }
+            .button-primary:hover,
+            .button-secondary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 18px 28px rgba(251, 133, 0, 0.18);
+            }
+            .hero-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 18px;
+            }
+            .hero-tag {
+                padding: 10px 16px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                background: rgba(255, 255, 255, 0.05);
+                color: var(--text);
+                font-size: 0.95rem;
+            }
+            .hero-image {
+                flex: 1 1 320px;
+                min-height: 290px;
+                border-radius: 30px;
+                background: radial-gradient(circle at top, rgba(255, 183, 3, 0.35), transparent 35%),
+                    linear-gradient(180deg, rgba(11, 17, 29, 0.96), rgba(9, 11, 18, 0.95));
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+                position: relative;
+                overflow: hidden;
+                display: grid;
+                place-items: center;
+            }
+            .hero-image::before {
+                content: "Free Fire";
+                position: absolute;
+                top: 24px;
+                left: 24px;
+                color: rgba(255, 255, 255, 0.14);
+                font-size: 4.4rem;
+                font-weight: 900;
+                letter-spacing: 0.25em;
+                transform: translateY(-10px);
+                z-index: 1;
+            }
+            .hero-image::after {
+                content: "Quentão";
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                font-size: 0.95rem;
+                color: rgba(255, 255, 255, 0.5);
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+            }
+            .hero-card {
+                width: 100%;
+                max-width: 400px;
+                padding: 24px;
+                background: rgba(8, 11, 17, 0.96);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 28px;
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+            }
+            .hero-card h3 {
+                font-size: 1.35rem;
+                margin-bottom: 12px;
+                color: #fff;
+            }
+            .hero-card p {
+                color: #a9b5ca;
+                margin-bottom: 16px;
+            }
+            .hero-card .hero-card-meta {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                color: #94a3b8;
+                font-size: 0.95rem;
+            }
+            .hero-card .hero-card-meta span {
+                display: inline-flex;
+                align-items: center;
+            }
+            .hero-card .hero-card-meta span::before {
+                content: "\25CF";
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                margin-right: 8px;
+                background: var(--main);
+                border-radius: 999px;
+            }
+            .stats {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 18px;
+                margin: 32px auto 0;
+            }
+            .stat-card {
+                padding: 24px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 24px;
+            }
+            .stat-card h4 {
+                font-size: 1.1rem;
+                color: var(--main);
+                margin-bottom: 10px;
+            }
+            .stat-card strong {
+                display: block;
+                font-size: 2rem;
+                margin-bottom: 6px;
+            }
+            .section {
+                max-width: 1120px;
+                margin: 48px auto 0;
+                padding: 0 6px;
+            }
+            .section-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 14px;
+                margin-bottom: 24px;
+            }
+            .section-header h2 {
+                font-size: clamp(2rem, 3vw, 2.7rem);
+                color: #fff;
+            }
+            .section-header p {
+                color: #94a3b8;
+            }
+            .cards-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 20px;
+            }
+            .card {
+                background: var(--card);
+                border-radius: 24px;
+                padding: 26px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+            }
+            .card h3 {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+                color: #fff;
+            }
+            .card p {
+                color: #bcccdc;
+                margin-bottom: 18px;
+            }
+            .label {
+                display: inline-flex;
+                padding: 8px 12px;
+                border-radius: 999px;
+                background: rgba(251, 133, 0, 0.14);
+                color: #ffd28c;
+                font-size: 0.85rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+            }
+            .news {
+                display: grid;
+                gap: 20px;
+            }
+            .news-item {
+                display: grid;
+                gap: 14px;
+                padding: 24px;
+                border-radius: 24px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .news-item h3 {
+                margin-bottom: 8px;
+                color: #fff;
+            }
+            .news-item p {
+                color: #a3b1c9;
+                margin-bottom: 10px;
+            }
+            .news-item small {
+                color: #94a3b8;
+            }
+            .highlight {
+                color: var(--main);
+            }
+            .footer-line {
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                margin: 40px 0 18px;
+            }
+            footer {
+                max-width: 1120px;
+                margin: 0 auto;
+                text-align: center;
+                color: #94a3b8;
+                font-size: 0.95rem;
+                padding: 0 6px 24px;
+            }
+            @media (max-width: 980px) {
+                .stats,
+                .cards-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+            @media (max-width: 760px) {
+                header,
+                .hero-card,
+                .card,
+                .news-item {
+                    padding: 22px;
+                }
+                .hero-top {
+                    flex-direction: column;
+                }
+                .stats,
+                .cards-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
     </head>
     <body>
         <header>
-            <h1>Meu blog tech</h1> 
-            <p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>  
+            <div class="hero-top">
+                <div class="hero-title">
+                    <small>Temática Free Fire</small>
+                    <h1>Blog do Quentão</h1>
+                    <p>Veja dicas de gameplay, melhores armas, atualizações e estratégias para vencer no Free Fire, com conteúdo preparado para quem quer dominar a arena.</p>
+                    <div class="hero-actions">
+                        <a class="button-primary" href="#posts">Ler posts</a>
+                        <a class="button-secondary" href="#noticias">Últimas novidades</a>
+                    </div>
+                    <div class="hero-tags">
+                        <span class="hero-tag">Dicas de mira</span>
+                        <span class="hero-tag">Armas top</span>
+                        <span class="hero-tag">Eventos</span>
+                        <span class="hero-tag">Guia de equipes</span>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <h3>Estratégia do dia</h3>
+                    <p>Use o posicionamento no mapa para pegar vantagem. Fique em áreas elevadas, evite tiroteios abertos e mantenha as zonas seguras sempre à vista.</p>
+                    <div class="hero-card-meta">
+                        <span>Meta: Solo vs Squad</span>
+                        <span>Toque: Movimento suave</span>
+                        <span>Surpresa: Duo de granada</span>
+                    </div>
+                </div>
+                <div class="hero-image"></div>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <h4>Guia completo</h4>
+                    <strong>+40</strong>
+                    <p>Artigos e análises sobre armas, jogabilidade e upgrades.</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Atualizações</h4>
+                    <strong>Semanal</strong>
+                    <p>Notícias de eventos, skins e mudanças de balanceamento.</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Comunidade</h4>
+                    <strong>Top players</strong>
+                    <p>Conteúdo voltado para quem joga com estratégia e quer evoluir rápido.</p>
+                </div>
+            </div>
         </header>
         <main>
-            <h2>Meu primeiro posts</h2>
-            <p>Por: Murilo Bento</p>
-            <p>Boas-vindas ao meu Blog! Aqui vou compartilhar dicas de programação e curiosidades da aréa de tecnologia.</p>
+            <section id="posts" class="section">
+                <div class="section-header">
+                    <div>
+                        <h2>Posts em destaque</h2>
+                        <p>Artigos recentes para melhorar sua performance no Free Fire.</p>
+                    </div>
+                    <a class="button-secondary" href="#">Ver todos</a>
+                </div>
+                <div class="cards-grid">
+                    <article class="card">
+                        <span class="label">Guia</span>
+                        <h3>As 5 melhores armas para dominar o BOOYAH</h3>
+                        <p>Conheça as armas mais fortes de cada categoria e saiba quando trocar de equipamento durante a partida.</p>
+                    </article>
+                    <article class="card">
+                        <span class="label">Tática</span>
+                        <h3>Estratégias para começar bem em Clash Squad</h3>
+                        <p>Monte equipe, escolha posição e controle o ritmo para vencer rodadas com segurança e eficiência.</p>
+                    </article>
+                    <article class="card">
+                        <span class="label">Atualização</span>
+                        <h3>Novos eventos e skins da próxima temporada</h3>
+                        <p>Fique por dentro das recompensas, cartas especiais e novidades que chegam ao jogo esta semana.</p>
+                    </article>
+                </div>
+            </section>
+            <section id="noticias" class="section">
+                <div class="section-header">
+                    <div>
+                        <h2>Notícias Free Fire</h2>
+                        <p>As últimas mudanças, eventos e dicas rápidas para não perder nada.</p>
+                    </div>
+                    <a class="button-secondary" href="#">Ver mais notícias</a>
+                </div>
+                <div class="news">
+                    <article class="news-item">
+                        <h3>Nova arma EXA liberada no servidor</h3>
+                        <p>Teste o poder da EXA contra inimigos em curta distância e descubra os melhores modos para usar essa novidade.</p>
+                        <small>Publicado há 2 horas</small>
+                    </article>
+                    <article class="news-item">
+                        <h3>Evento de verão traz bônus de ouro e passes</h3>
+                        <p>Participe do evento de verão para ganhar skins exclusivas e multiplicadores de pontos de experiência.</p>
+                        <small>Publicado ontem</small>
+                    </article>
+                    <article class="news-item">
+                        <h3>Dicas para subir de rank rápido na próxima season</h3>
+                        <p>Foque em survival e escolha o melhor loadout para tensão máxima e jogadas seguras em dupla ou squad.</p>
+                        <small>Publicado há 3 dias</small>
+                    </article>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-header">
+                    <div>
+                        <h2>Sobre o Blog do Quentão</h2>
+                        <p>Conteúdo pensado para quem joga Free Fire com estilo, estratégia e busca o melhor resultado em cada partida.</p>
+                    </div>
+                </div>
+                <div class="cards-grid">
+                    <article class="card">
+                        <h3>O que você encontra aqui</h3>
+                        <p>Guia de armas, dicas de habilidade, análise de mapas e ideias de comp para todos os modos do jogo.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Por que seguir</h3>
+                        <p>Conteúdo atualizado e direto, com foco em prática, táticas reais e tendências do jogo competitivo.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Quem é o Quentão</h3>
+                        <p>Eu sou apaixonado por Free Fire e compartilho as melhores jogadas, estratégias e notícias para você evoluir.</p>
+                    </article>
+                </div>
+            </section>
+            <div class="footer-line"></div>
         </main>
-
+        <footer>
+            <p>Blog do Quentão - Free Fire | Criado para fãs que querem dominar o campo de batalha e não perder nenhuma novidade.</p>
+        </footer>
     </body>
 </html> 
