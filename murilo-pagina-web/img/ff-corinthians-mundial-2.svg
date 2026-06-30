@@ -1,0 +1,12 @@
+<svg width="600" height="360" viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="360" rx="32" fill="#0B1323"/>
+  <path d="M170 85H430C445 85 456 98 456 113V247C456 262 445 275 430 275H170C155 275 144 262 144 247V113C144 98 155 85 170 85Z" fill="#fff" opacity="0.08"/>
+  <rect x="210" y="120" width="180" height="140" rx="18" fill="#000" opacity="0.4"/>
+  <path d="M240 150C240 130 260 115 280 115H320C340 115 360 130 360 150V210C360 230 340 245 320 245H280C260 245 240 230 240 210V150Z" fill="#fff" opacity="0.12"/>
+  <path d="M280 150H320" stroke="#ffd703" stroke-width="16" stroke-linecap="round"/>
+  <path d="M280 190H320" stroke="#ffd703" stroke-width="16" stroke-linecap="round"/>
+  <path d="M300 110L330 80" stroke="#ffd703" stroke-width="18" stroke-linecap="round"/>
+  <path d="M300 110L270 80" stroke="#ffd703" stroke-width="18" stroke-linecap="round"/>
+  <text x="300" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="30" font-weight="700" fill="#fff">Campeões do Mundial</text>
+  <text x="300" y="306" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#fff" opacity="0.75">Corinthians em festa</text>
+</svg>

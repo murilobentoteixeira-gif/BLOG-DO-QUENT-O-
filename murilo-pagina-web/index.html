@@ -263,6 +263,38 @@
                 color: #bcccdc;
                 margin-bottom: 18px;
             }
+            .image-row {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 20px;
+                margin-bottom: 32px;
+            }
+            .image-card {
+                position: relative;
+                border-radius: 28px;
+                overflow: hidden;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                background: rgba(255, 255, 255, 0.03);
+                box-shadow: 0 24px 40px rgba(0, 0, 0, 0.16);
+            }
+            .image-card img {
+                width: 100%;
+                display: block;
+                height: auto;
+            }
+            .image-card span {
+                position: absolute;
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
+                display: inline-flex;
+                padding: 10px 14px;
+                border-radius: 999px;
+                background: rgba(8, 11, 17, 0.88);
+                color: #fff;
+                font-size: 0.95rem;
+                backdrop-filter: blur(6px);
+            }
             .label {
                 display: inline-flex;
                 padding: 8px 12px;
@@ -312,6 +344,24 @@
                 font-size: 0.95rem;
                 padding: 0 6px 24px;
             }
+            .footer-credit {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-top: 10px;
+                padding: 12px 18px;
+                border-radius: 999px;
+                background: rgba(255, 183, 3, 0.14);
+                border: 1px solid rgba(255, 183, 3, 0.35);
+                color: #ffb703;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+            }
+            .footer-credit::before {
+                content: "★";
+                color: #fb8500;
+            }
             @media (max-width: 980px) {
                 .stats,
                 .cards-grid {
@@ -341,7 +391,7 @@
                 <div class="hero-title">
                     <small>Temática Free Fire</small>
                     <h1>Blog do Quentão</h1>
-                    <p>Veja dicas de gameplay, melhores armas, atualizações e estratégias para vencer no Free Fire, com conteúdo preparado para quem quer dominar a arena.</p>
+                    <p>Veja dicas de gameplay, melhores armas, atualizações, memes e notícias que marcaram o Free Fire — ideal para quem acompanha a cena competitiva e quer sempre estar por dentro.</p>
                     <div class="hero-actions">
                         <a class="button-primary" href="#posts">Ler posts</a>
                         <a class="button-secondary" href="#noticias">Últimas novidades</a>
@@ -349,8 +399,8 @@
                     <div class="hero-tags">
                         <span class="hero-tag">Dicas de mira</span>
                         <span class="hero-tag">Armas top</span>
-                        <span class="hero-tag">Eventos</span>
-                        <span class="hero-tag">Guia de equipes</span>
+                        <span class="hero-tag">Memes virais</span>
+                        <span class="hero-tag">Lendas do jogo</span>
                     </div>
                 </div>
                 <div class="hero-card">
@@ -387,7 +437,7 @@
                 <div class="section-header">
                     <div>
                         <h2>Posts em destaque</h2>
-                        <p>Artigos recentes para melhorar sua performance no Free Fire.</p>
+                        <p>Artigos recentes para melhorar sua performance no Free Fire e entender os principais memes que viralizam na comunidade.</p>
                     </div>
                     <a class="button-secondary" href="#">Ver todos</a>
                 </div>
@@ -409,11 +459,51 @@
                     </article>
                 </div>
             </section>
+            <section id="memes" class="section">
+                <div class="section-header">
+                    <div>
+                        <h2>Memes e momentos marcantes</h2>
+                        <p>Relembre as piadas, casos e virais que fizeram toda a comunidade falar de Free Fire.</p>
+                    </div>
+                    <a class="button-secondary" href="#">Ver post completo</a>
+                </div>
+                <div class="image-row">
+                    <article class="image-card">
+                        <img src="img/ff-booyah.svg" alt="Booyah Free Fire" />
+                        <span>Booyah lendário</span>
+                    </article>
+                    <article class="image-card">
+                        <img src="img/ff-corinthians-mundial-1.svg" alt="Corinthians Mundial Free Fire" />
+                        <span>Corinthians Mundial</span>
+                    </article>
+                    <article class="image-card">
+                        <img src="img/ff-corinthians-mundial-2.svg" alt="Corinthians campeão Mundial" />
+                        <span>Campeões do Mundial</span>
+                    </article>
+                </div>
+                <div class="cards-grid">
+                    <article class="card">
+                        <span class="label">Meme</span>
+                        <h3>O famoso "matei 20 e só levei 5"</h3>
+                        <p>Quando o Pro do Booyah caiu e só alcançou o top 10, o meme tomou as redes com legendas e zoeiras.</p>
+                    </article>
+                    <article class="card">
+                        <span class="label">Clássico</span>
+                        <h3>O bug da cadeira imortal</h3>
+                        <p>Aquela partida em que o jogador entrou em uma cadeira invisível e o servidor virou piada entre os squads.</p>
+                    </article>
+                    <article class="card">
+                        <span class="label">Lenda</span>
+                        <h3>Free Fire do Rick: "solo com muita câmera"</h3>
+                        <p>A frase virou meme nas lives e ajudou a popularizar desafios de mira e edição de vídeo.</p>
+                    </article>
+                </div>
+            </section>
             <section id="noticias" class="section">
                 <div class="section-header">
                     <div>
                         <h2>Notícias Free Fire</h2>
-                        <p>As últimas mudanças, eventos e dicas rápidas para não perder nada.</p>
+                        <p>As últimas mudanças, eventos, atualizações e memes que estão dominando a cena.</p>
                     </div>
                     <a class="button-secondary" href="#">Ver mais notícias</a>
                 </div>
@@ -429,9 +519,19 @@
                         <small>Publicado ontem</small>
                     </article>
                     <article class="news-item">
-                        <h3>Dicas para subir de rank rápido na próxima season</h3>
-                        <p>Foque em survival e escolha o melhor loadout para tensão máxima e jogadas seguras em dupla ou squad.</p>
-                        <small>Publicado há 3 dias</small>
+                        <h3>Memes virais: o desafio do Petão</h3>
+                        <p>Os jogadores compartilharam clips hilários do Petão derrubando squads inteiros. Veja como entrar nessa trend.</p>
+                        <small>Publicado hoje</small>
+                    </article>
+                    <article class="news-item">
+                        <h3>Guia rápido: como usar o novo personagem em Elite Pass</h3>
+                        <p>Os primeiros dias de uso mostram quais habilidades garantem vantagem nas zonas apertadas.</p>
+                        <small>Publicado há 8 horas</small>
+                    </article>
+                    <article class="news-item">
+                        <h3>Top 3 espaços secretos no mapa mais recente</h3>
+                        <p>Descubra esconderijos pouco conhecidos que podem virar rota de fuga ou armadilha para o inimigo.</p>
+                        <small>Publicado há 2 dias</small>
                     </article>
                 </div>
             </section>
@@ -439,21 +539,21 @@
                 <div class="section-header">
                     <div>
                         <h2>Sobre o Blog do Quentão</h2>
-                        <p>Conteúdo pensado para quem joga Free Fire com estilo, estratégia e busca o melhor resultado em cada partida.</p>
+                        <p>Conteúdo pensado para quem joga Free Fire com estilo, estratégia e não perde as noticias, memes e momentos que marcaram a comunidade.</p>
                     </div>
                 </div>
                 <div class="cards-grid">
                     <article class="card">
                         <h3>O que você encontra aqui</h3>
-                        <p>Guia de armas, dicas de habilidade, análise de mapas e ideias de comp para todos os modos do jogo.</p>
+                        <p>Guia de armas, dicas de habilidade, análise de mapas, memes de Free Fire e listas com os momentos mais engraçados.</p>
                     </article>
                     <article class="card">
                         <h3>Por que seguir</h3>
-                        <p>Conteúdo atualizado e direto, com foco em prática, táticas reais e tendências do jogo competitivo.</p>
+                        <p>Conteúdo atualizado e direto, com foco em prática, táticas reais, tendências competitivas e as piadas que todo mundo comenta.</p>
                     </article>
                     <article class="card">
                         <h3>Quem é o Quentão</h3>
-                        <p>Eu sou apaixonado por Free Fire e compartilho as melhores jogadas, estratégias e notícias para você evoluir.</p>
+                        <p>Sou apaixonado por Free Fire e trago as melhores jogadas, notícias frescas, memes e curiosidades para você não ficar por fora.</p>
                     </article>
                 </div>
             </section>
@@ -461,6 +561,7 @@
         </main>
         <footer>
             <p>Blog do Quentão - Free Fire | Criado para fãs que querem dominar o campo de batalha e não perder nenhuma novidade.</p>
+            <div class="footer-credit">Feito por: Murilo Bento Quentão</div>
         </footer>
     </body>
 </html> 
